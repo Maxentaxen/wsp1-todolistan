@@ -1,24 +1,24 @@
-task :seed do 
-    require "bundler"
-    Bundler.require
-    require_relative 'db/seeder'
-    Seeder.seed!
-end
+require_relative 'config'
+require 'rake'
 
+desc "Start Sinatra app with rerun for auto-reload"
 task :dev do
-    sh 'bundle exec rerun --ignore "*.{erb,js,css}" --force-polling "rackup --host 0.0.0.0"'
+  sh 'bundle exec rerun --ignore "*.{erb,js,css}" --force-polling "rackup --host 0.0.0.0"'
 end
 
-task :run do
-    #todo
+desc "Fill the database with initial data from the seeder file"
+task :seed do
+  require_relative './db/seeder'
+  puts "✅ Database done seeding!"
 end
 
-task :test do
-    #todo
-end
-
-#sudo rake kill med lösenordet wsp
-#todo testa på windowsdator
-task :kill do
-    sh 'killall ruby && killall rack && killall rerun'
+desc "Default task: seeds database if no db file exists (#{DB_PATH}), then start dev server"
+task default: [] do
+  if !File.exist?(DB_PATH)
+    puts "📦 No database found - running seed task..."
+    Rake::Task[:seed].invoke
+  else
+    puts "🚀 Database found - starting app..."
+  end
+  Rake::Task[:dev].invoke
 end
