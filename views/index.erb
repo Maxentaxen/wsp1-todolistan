@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt #2</title>
+    <title>FlixMax - Hem</title>
     <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
 </head>
 <body>
-  <img src="/img/glhf.png">
+  <div class="wrapper">
+    <div class="header">
+      <h1>FlixMax</h1>
+    </div>
+    <% @towatch.each do |movie|%>
+    <div class="towatch">
+      <h2><%=movie['name']%></h2>
+      <p><%=movie['genre']%></p>
+      <p>Year: <%=movie['year']%></p>
+      <p><%=movie['imdb_rating']%>/10</p>
+      <p><%=movie['runtime']%> min</p>
+      <p><%=movie['service']%></p>
+    </div>
+    <% end %>
+  </div>
 </body>
 </html>

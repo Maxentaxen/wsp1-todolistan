@@ -19,17 +19,29 @@ class Seeder
   end
 
   def self.create_tables
-    db.execute('CREATE TABLE todos (
+    db.execute('CREATE TABLE towatch (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                category_id INTEGER 
-                description TEXT)')
+                genre TEXT NOT NULL,
+                year INTEGER,
+                imdb_rating TEXT,
+                runtime INTEGER,
+                service TEXT)')
+
+    db.execute('CREATE TABLE watched (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                genre TEXT NOT NULL,
+                watchdate TEXT,
+                score TEXT,
+                imdb_rating TEXT,
+                notes TEXT)')
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO todos (name, description) VALUES ("Köp mjölk", "3 lite mellanmjölk, eko")')
-    db.execute('INSERT INTO todos (name, description) VALUES ("Köp julgran", "En rödgran")')
-    db.execute('INSERT INTO todos (name, description) VALUES ("Pynta gran", "Glöm inte lamporna i granen och tomten")')
+    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service) VALUES ("Oppenheimer", "Thriller", 2023, "8.3", 180, "Netflix")')
+    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service) VALUES ("Rymdimperiet slår tillbaka", "Sci-fi", 1980, "8.7", 124, "Disney+")')
+    db.execute('INSERT INTO watched (name, genre, watchdate, score, imdb_rating, notes) VALUES ("The Dark knight", "Action", "16/05/2021", "10", "9.3", "IM BATMAN")')
   end
 
   private

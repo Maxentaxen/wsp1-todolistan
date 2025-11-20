@@ -16,7 +16,8 @@ class App < Sinatra::Base
 
     # Routen /
     get '/' do
-        erb(:"index")
+      @towatch = db.execute('SELECT * FROM towatch')
+      erb(:"index")
     end
 
 end

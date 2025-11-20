@@ -3,5 +3,33 @@ body {
   color: #666;
   background-color: #f1f1f1;
   font-size: x-large;
-  margin: 1em;
+  width: 90vw;
+  padding: 0;
+  margin: 0;
+}
+
+
+.towatch {
+  border: 3px solid black;
+  width: auto;
+  height: auto;
+  padding: 10px;
+}
+.header {
+  grid-area: hd;
+}
+
+.wrapper {
+  margin: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 100px 400px 400px 400px 100px;
+  column-gap: 20px;
+  grid-template-areas:
+  'hd hd hd  hd'
+  'tw tw tw  tw'
+  'tw tw tw  tw'
+  'tw tw tw  tw'
+  'ft ft ft  ft';
 }
