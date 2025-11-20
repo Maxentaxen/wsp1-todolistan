@@ -21,9 +21,21 @@ class App < Sinatra::Base
       erb(:"index")
     end
 
-    get '/:id' do |id|
+    get '/index' do 
+      erb(:'index')
+    end
+    get '/add' do
+      erb(:"add")
+    end
+
+    get '/show/:id' do |id|
       @movieinfo = db.execute('SELECT * FROM towatch WHERE id=?', id.to_i).first
       erb(:"movieinfo")
     end
 
+    post '/add' do
+      p params
+      db.execute("INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES (?,?,?,?,?,?, 0)", params.values)
+      redirect('/')
+    end
 end

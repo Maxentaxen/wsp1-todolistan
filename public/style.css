@@ -35,9 +35,18 @@ body {
   background: url('img/empire.png');
   background-repeat: 0;
   background-size: 100% 100%;
+
 }
-
-
+#movie3 {
+  background: url('img/darkknight.png');
+  background-repeat: 0;
+  background-size: 100% 100%;
+}
+#movie6 {
+  background: url('img/potc2.png');
+  background-repeat: 0;
+  background-size: 100% 100%;
+}
 .towatch {
   border: 3px solid black;
   border-radius: 40px;
@@ -50,6 +59,7 @@ body {
   gap: 50px;
   align-items: end;
   justify-content: space-between;
+  
 }
 
 
@@ -88,8 +98,13 @@ a:visited {
 .header h1 {
   margin: 0;
 }
-.header span {
-  font-size: 50px;
+.nav span {
+  font-size: 55px;
+  transition: scale 250ms ease;
+}
+
+.nav span:hover {
+  scale: 1.1;
 }
 .nav {
   grid-area:th;
@@ -168,4 +183,40 @@ a:visited {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.addBox {
+  padding:25px;
+}
+
+.addBox h1 {
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color:#666;
+  width: 300px;
+  padding: 15px;
+  height: 500px;
+  color: white;
+  border-radius: 15px;;
+}
+
+input {
+  height: 30px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 17px;
+  padding-left: 10px;
+}
+
+.formbutton {
+  background-color: lime;
+  color: white;
+  font-weight: bolder;
+  width: 75px;
+  height: 40px;
+
 }

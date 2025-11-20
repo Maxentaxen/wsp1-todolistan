@@ -6,7 +6,9 @@
     <title>FlixMax - Hem</title>
     <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box" />
-  </head>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+
+    </head>
 <body>
   <div class="not_watched">
     <div class="header">
@@ -15,16 +17,15 @@
       </div>
       <div class="nav">
       <div class="navitem">
+      <a href="/add">
       <span class="material-symbols-outlined">add_box</span>
+      </a>
       </div>
       <div class="navitem">
-      <span class="material-symbols-outlined">add_box</span>
       </div>
       <div class="navitem">
-      <span class="material-symbols-outlined">add_box</span>
       </div>
       <div class="navitem">
-      <span class="material-symbols-outlined">add_box</span>
       </div>
     </div>
     <% @towatch.each do |movie|%>
@@ -33,7 +34,7 @@
       <h2 class="movietitle"><%=movie['name']%></h2>
       </div>
       <div class="buttons">
-      <a href="/<%=movie['id']%>"><button class="infobutton">INFO</button></a>
+      <a href="/show/<%=movie['id']%>"><button class="infobutton">INFO</button></a>
       <a><button class="watch infobutton">Watched?</button> </a>
       </div>
     </div>

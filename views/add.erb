@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till en film</title>
+    <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+</head>
+<body>
+    <div class="addBox">
+    <div class="header">
+        <h1>FlixMax</h1>
+    </div>
+    <div class="form">
+        <h2>Lägg till en film!</h2>
+        <form method="POST">
+            <input type="text" placeholder="Titel" name="name">
+            <input type="text" placeholder="Genre" name="genre">
+            <input type="text" placeholder="År" name="year">
+            <input type="text" placeholder="IMDB-betyg" name="imdb_rating">
+            <input type="text" placeholder="Runtime (i minuter)" name="runtime">
+            <input type="text" placeholder="Streamingtjänst" name="service">
+            <input class="formbutton" type="submit" placeholder="Skicka">
+        </form>
+    </div>
+    </div>
+</body>
+</html>
