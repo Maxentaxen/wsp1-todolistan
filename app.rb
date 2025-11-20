@@ -16,8 +16,14 @@ class App < Sinatra::Base
 
     # Routen /
     get '/' do
-      @towatch = db.execute('SELECT * FROM towatch')
+      @towatch = db.execute('SELECT * FROM towatch WHERE watched = 0')
+      @watched = db.execute('SELECT * FROM towatch WHERE watched = 1')
       erb(:"index")
+    end
+
+    get '/:id' do |id|
+      @movieinfo = db.execute('SELECT * FROM towatch WHERE id=?', id.to_i).first
+      erb(:"movieinfo")
     end
 
 end

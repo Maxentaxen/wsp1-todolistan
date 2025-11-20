@@ -5,20 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlixMax - Hem</title>
     <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
-</head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box" />
+  </head>
 <body>
-  <div class="wrapper">
+  <div class="not_watched">
     <div class="header">
       <h1>FlixMax</h1>
+
+      </div>
+      <div class="nav">
+      <div class="navitem">
+      <span class="material-symbols-outlined">add_box</span>
+      </div>
+      <div class="navitem">
+      <span class="material-symbols-outlined">add_box</span>
+      </div>
+      <div class="navitem">
+      <span class="material-symbols-outlined">add_box</span>
+      </div>
+      <div class="navitem">
+      <span class="material-symbols-outlined">add_box</span>
+      </div>
     </div>
     <% @towatch.each do |movie|%>
-    <div class="towatch">
-      <h2><%=movie['name']%></h2>
-      <p><%=movie['genre']%></p>
-      <p>Year: <%=movie['year']%></p>
-      <p><%=movie['imdb_rating']%>/10</p>
-      <p><%=movie['runtime']%> min</p>
-      <p><%=movie['service']%></p>
+      <div class="towatch" id="movie<%=movie['id']%>">
+      <div class="title" >
+      <h2 class="movietitle"><%=movie['name']%></h2>
+      </div>
+      <div class="buttons">
+      <a href="/<%=movie['id']%>"><button class="infobutton">INFO</button></a>
+      <a><button class="watch infobutton">Watched?</button> </a>
+      </div>
     </div>
     <% end %>
   </div>

@@ -15,7 +15,7 @@ class Seeder
   end
 
   def self.drop_tables
-    db.execute('DROP TABLE IF EXISTS todos')
+    db.execute('DROP TABLE IF EXISTS towatch')
   end
 
   def self.create_tables
@@ -26,22 +26,18 @@ class Seeder
                 year INTEGER,
                 imdb_rating TEXT,
                 runtime INTEGER,
-                service TEXT)')
-
-    db.execute('CREATE TABLE watched (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                genre TEXT NOT NULL,
-                watchdate TEXT,
+                service TEXT,
+                watched BIT,
                 score TEXT,
-                imdb_rating TEXT,
-                notes TEXT)')
+                note TEXT)')
+
+
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service) VALUES ("Oppenheimer", "Thriller", 2023, "8.3", 180, "Netflix")')
-    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service) VALUES ("Rymdimperiet slår tillbaka", "Sci-fi", 1980, "8.7", 124, "Disney+")')
-    db.execute('INSERT INTO watched (name, genre, watchdate, score, imdb_rating, notes) VALUES ("The Dark knight", "Action", "16/05/2021", "10", "9.3", "IM BATMAN")')
+    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES ("Oppenheimer", "Thriller", 2023, "8.3", 180, "Netflix", 0)')
+    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES ("Rymdimperiet slår tillbaka", "Sci-fi", 1980, "8.7", 124, "Disney+", 0)')
+    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched, score, note) VALUES ("The Dark knight", "Action", 2008, "9.3", 153, "Netflix", 1, "10", "IM BATMAN")')
   end
 
   private
