@@ -8,21 +8,12 @@
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
 </head>
 <body>
-    <div class="biginfo"> 
-        <div class="header"> 
-        <h1>FlixMax</h1>
-        </div>
-        <div class="actualinfo">
-            <h2><%=@movieinfo['name']%></h2>
-            <p>Genre: <%=@movieinfo['genre']%> </p>
-            <p id="">Year of release: <%=@movieinfo['year']%> </p>
-            <div class=imdbstuff>
-            <img src="/img/imdb.png" style="
-            height: 28px;width:50px;" >
-            <p id="imdbrating">: <%=@movieinfo['imdb_rating']%></p></div>
-            <p>Runtime: <%=@movieinfo['runtime']%> mins</p>
-            <p>Streaming Service: <%=@movieinfo['service']%></p>
-        </div>
-    </div>
+    <h2><%=movie['name']%>
+    <p>Release year: <%=movie['year']%></p>
+    <p>IMDB: <%=movie['imdb_rating']%></p>
+    <p>Runtime: <%=movie['runtime']%></p>
+    <p>Genre<%=movie['genres'].split(',').length > 1 ? "s": ""%>: <%= movie['genres'].split(",").join(", ")%></p>
+    <p>Streaming service<%=(movie['services'].split(",").length > 1 ? "s": "")%>: <%=movie['services'].split(",").join(", ")%></p>
+
 </body>
 </html>

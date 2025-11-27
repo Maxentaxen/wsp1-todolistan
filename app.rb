@@ -43,6 +43,22 @@ class App < Sinatra::Base
     end
 
     post '/add' do
-      
+      ap params
+      movieParams = [params['name'], params['year'].to_i, params['imdb_rating'], params['runtime']]
+      ap movieParams
+      db.execute('INSERT INTO movies (name, year, imdb_rating, runtime, watched, score, note) VALUES (?, ?, ?, ?, 0, "", "")', movieParams)
+      id = db.execute("SELECT id FROM movies where name=?", params['name']).first.values
+
+
+      params['genre'].each do |genreName|
+        id_database_params = [id, genreName.to_i]
+        p id_database_params
+        db.execute("INSERT INTO movies_genres (movie_id, genre_id) VALUES (?,?)", id_database_params)
+      end
+      params['service'].each do |service|
+        service_db_params = [id, service]
+        db.execute("INSERT INTO movies_services (movie_id, service_id) VALUES (?,?)", service_db_params)
+      end
+      redirect("/")
     end
 end

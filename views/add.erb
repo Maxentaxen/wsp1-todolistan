@@ -8,20 +8,37 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
 </head>
 <body>
-    <div class="addBox">
-    <div class="header">
-        <h1>FlixMax</h1>
-    </div>
     <div class="form">
-        <h2>Lägg till en film!</h2>
-        <form method="POST">
-            <input type="text" placeholder="Title" name="name"><br>
-            <input type="text" placeholder="Genre(s)" name="genre"><br>
-            <input type="text" placeholder="Year" name="year"><br>
-            <input type="text" placeholder="IMDB-score" name="imdb_rating"><br>
-            <input type="text" placeholder="Runtime (in minutes)" name="runtime"><br>
-            <input type="text" placeholder="Streming service(s)" name="service"><br>
-            <input class="formbutton" type="submit" placeholder="Skicka">
+        <h2>Add a movie!</h2>
+        <form method="POST" action="/add">
+            <input type="text" class="normal"placeholder="Title" name="name"><br>
+            <h4>Genres</h4>
+            <div class="genres">
+            <label for="genres">Thriller<input type="checkbox" name="genre[]" value=1><br>
+            <label for="genres">Biography<input type="checkbox" name="genre[]" value=2><br>
+            <label for="genres">Comedy<input type="checkbox" name="genre[]" value=3><br>
+            <label for="genres">Romance<input type="checkbox" name="genre[]" value=4><br>
+            <label for="genres">Horror<input type="checkbox" name="genre[]" value=5><br>
+            <label for="genres">Adventure<input type="checkbox" name="genre[]" value=6><br>
+            <label for="genres">Action<input type="checkbox" name="genre[]" value=7><br>
+            <label for="genres">Documentary<input type="checkbox" name="genre[]" value=8><br>
+            <label for="genres">Fantasy<input type="checkbox" name="genre[]" value=9><br>
+            <label for="genres">Drama<input type="checkbox" name="genre[]" value=10><br>
+            <label for="genres">Science Fiction<input type="checkbox" name="genre[]" value=11><br>
+            <label for="genres">Animation<input type="checkbox" name="genre[]" value=12><br>
+            <label for="genres">Musical<input type="checkbox" name="genre[]" value=13><br>
+            </div>
+
+
+
+            <br>
+            <input type="text" class="normal" placeholder="Year" name="year"><br>
+            <input type="text" class="normal" placeholder="IMDB-score" name="imdb_rating"><br>
+            <input type="text" class="normal" placeholder="Runtime (in minutes)" name="runtime"><br>
+            <h4>Streaming Service(s)</h4>
+            <label for="genres">Netflix<input type="checkbox" name="service[]" value=1><br>
+            <label for="genres">Disney+<input type="checkbox" name="service[]" value=2><br><br>
+            <input type="submit" placeholder="Send">
         </form>
     </div>
     </div>

@@ -2,4 +2,32 @@
   border: 3px solid black;
   border-radius: 10px;
   width: 500px;
+  margin: 50px;
+  padding: 20px;
+  text-align: center;
+  height: 666px;
+}
+
+.normal {
+  margin: 10px;
+}
+
+.form {
+  margin-left: 20px;
+}
+
+.genres {
+  border: 1px solid black;
+  width: 200px;
+  padding: 10px;
+  margin-top: 0;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
