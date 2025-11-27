@@ -9,9 +9,9 @@
 </head>
 <body>
     <h2><%=movie['name']%>
-    <p>Release year: <%=movie['year']%></p>
-    <p>IMDB: <%=movie['imdb_rating']%></p>
-    <p>Runtime: <%=movie['runtime']%></p>
+    <p>Release year: <%=movie['year']></p>
+    <p>IMDB: <%=movie['imdb_rating']></p>
+    <p>Runtime: <%=movie['runtime']> min</p>
     <p>Genre<%=movie['genres'].split(',').length > 1 ? "s": ""%>: <%= movie['genres'].split(",").join(", ")%></p>
     <p>Streaming service<%=(movie['services'].split(",").length > 1 ? "s": "")%>: <%=movie['services'].split(",").join(", ")%></p>
 
