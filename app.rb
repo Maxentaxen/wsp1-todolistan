@@ -16,8 +16,18 @@ class App < Sinatra::Base
 
     # Routen /
     get '/' do
-      @towatch = db.execute('SELECT * FROM towatch WHERE watched = 0')
-      @watched = db.execute('SELECT * FROM towatch WHERE watched = 1')
+      @movies = db.execute('SELECT name, year, imdb_rating, runtime, watched, score, note, GROUP_CONCAT(DISTINCT genre_name) as genres, GROUP_CONCAT(DISTINCT service_name) as services FROM movies
+                              INNER JOIN movies_genres 
+                                ON movies.id = movies_genres.movie_id
+                              INNER JOIN genres
+                                ON movies_genres.genre_id = genres.genre_id
+                              INNER JOIN movies_services
+                                ON movies.id = movies_services.movie_id
+                              INNER JOIN services
+                                ON movies_services.service_id = services.service_id
+                            GROUP BY movies.id
+                            ')
+      ap @movies
       erb(:"index")
     end
 
@@ -29,13 +39,10 @@ class App < Sinatra::Base
     end
 
     get '/show/:id' do |id|
-      @movieinfo = db.execute('SELECT * FROM towatch WHERE id=?', id.to_i).first
-      erb(:"movieinfo")
+      
     end
 
     post '/add' do
-      p params
-      db.execute("INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES (?,?,?,?,?,?, 0)", params.values)
-      redirect('/')
+      
     end
 end

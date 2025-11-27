@@ -15,29 +15,72 @@ class Seeder
   end
 
   def self.drop_tables
-    db.execute('DROP TABLE IF EXISTS towatch')
+    db.execute('DROP TABLE IF EXISTS movies')
+    db.execute('DROP TABLE IF EXISTS genres')
+    db.execute('DROP TABLE IF EXISTS movies_genres')
+    db.execute('DROP TABLE IF EXISTS services')
+    db.execute('DROP TABLE IF EXISTS movies_services')
+
+
+
+
   end
 
   def self.create_tables
-    db.execute('CREATE TABLE towatch (
+    db.execute('CREATE TABLE movies (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                genre TEXT NOT NULL,
                 year INTEGER,
                 imdb_rating TEXT,
                 runtime INTEGER,
-                service TEXT,
                 watched BIT,
                 score TEXT,
                 note TEXT)')
 
+    db.execute('CREATE TABLE genres (
+                  genre_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  genre_name TEXT NOT NULL)')
+    
+    db.execute('CREATE TABLE movies_genres (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                movie_id INTEGER,
+                genre_id INTEGER)')
+
+    db.execute('CREATE TABLE services (
+                service_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                service_name TEXT NOT NULL)')
+    
+    db.execute('CREATE TABLE movies_services (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                movie_id INTEGER,
+                service_id INTEGER)')
 
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES ("Oppenheimer", "Thriller", 2023, "8.3", 180, "Netflix", 0)')
-    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched) VALUES ("Rymdimperiet slår tillbaka", "Sci-fi", 1980, "8.7", 124, "Disney+", 0)')
-    db.execute('INSERT INTO towatch (name, genre, year, imdb_rating, runtime, service, watched, score, note) VALUES ("The Dark knight", "Action", 2008, "9.3", 153, "Netflix", 1, "10", "IM BATMAN")')
+    db.execute('INSERT INTO movies (name, year, imdb_rating, runtime, watched, score, note) VALUES ("Oppenheimer", 2023, "8.3", 180, 0, "","")') 
+
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Thriller")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Biography")')  
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Comedy")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Romance")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Horror")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Adventure")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Action")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Documentary")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Fantasy")')      
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Drama")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Science Fiction")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Animation")')
+    db.execute('INSERT INTO genres (genre_name) VALUES ("Musical")')    
+    
+
+  
+    db.execute('INSERT INTO movies_genres (movie_id, genre_id) VALUES (1, 1)') 
+    db.execute('INSERT INTO movies_genres (movie_id, genre_id) VALUES (1, 2)') 
+    db.execute('INSERT INTO services (service_name) VALUES ("Netflix")')
+    db.execute('INSERT INTO services (service_name) VALUES ("Disney+")')
+    db.execute('INSERT INTO movies_services (movie_id, service_id) VALUES (1,1)')
   end
 
   private
